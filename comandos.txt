@@ -1,0 +1,9 @@
+apt-get install redis-server
+pip install redis
+pip install python-telegram-bot
+pip install configparser
+
+# Serve para upar um arquivo a partir de uma conta
+pip3.6 install telegram-upload
+pip install telegram-upload
+https://github.com/Nekmo/telegram-upload/
