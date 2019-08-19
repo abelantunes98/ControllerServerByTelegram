@@ -44,11 +44,12 @@ def start(bot, update):
     msg = "Bem vindo!\n"
     msg += "O {0} está a sua disposição.\n".format(me.first_name)
     msg += "O que você deseja fazer?\n\n"
-    msg += "/list - Listar os comandos\n"
+    msg += "/reboot - Reiniciar sistema.\n"
+    msg += "/download - Efetuar downloads."
 
     # Commands menu
-    main_menu_keyboard = [[telegram.KeyboardButton('/list')],
-                            [telegram.KeyboardButton('/download')]]
+    main_menu_keyboard = [[telegram.KeyboardButton('/Reboot')],
+                            [telegram.KeyboardButton('/Download')]]
     reply_kb_markup = telegram.ReplyKeyboardMarkup(main_menu_keyboard,
                                                    resize_keyboard=True,
                                                    one_time_keyboard=True)
@@ -57,6 +58,17 @@ def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id,
                      text=msg,
                      reply_markup=reply_kb_markup)
+
+def reboot(bot, update):
+    msg = "Efetuando Reboot..."
+
+    # Send the message with menu
+    bot.send_message(chat_id=update.message.chat_id,
+                     text=msg
+                     )
+
+    os.system("shutdown -r now")
+
 
 def download(bot, update):
     main_menu_keyboard = [[telegram.KeyboardButton('/video')]]
@@ -86,7 +98,7 @@ def send_video(bot, update):
         upload_video("videos/video.mp4", bot, update)
 
 def upload_video(video_name, bot, update):
-    comando = "telegram-upload " + video_name
+    comando = "bash upVideo.sh"
     try:
         os.system(comando)
         msg = "Video upado!"
@@ -115,15 +127,20 @@ def unknown(bot, update):
     else:
         try:
             video_url = update.message.text.split()[1]
-            comando = " youtube-dl -o \"/usr/games/usr/tel/videos/%(title)s.%(ext)s\" " + video_url
+            arquivo = open('url.txt', 'w')
+            arquivo.write(video_url)
+            arquivo.close()
+            comando = "nohup bash downloadVideo.sh > /dev/null &"
+            os.system(comando)
+            '''comando = " youtube-dl -o \"/usr/games/usr/tel/videos/%(title)s.%(ext)s\" " + video_url
             os.system(comando)
             comando = "ls videos/ > nome.txt"
             os.system(comando)
             comando = "mv videos/\"$(cat nome.txt)\" videos/video.mp4"
-            os.system(comando)
-            send_video(bot, update)
-            comando = "rm videos/video.mp4 nome.txt"
-            os.system(comando)
+            os.system(comando)'''
+            #send_video(bot, update)
+            #comando = "rm videos/video.mp4 nome.txt"
+            #os.system(comando)
         except Exception as e:
             print(e)
 
@@ -131,10 +148,12 @@ def unknown(bot, update):
     A funcao CommandHandler liga um comando do usuario a uma funcao python
 '''
 start_handler = CommandHandler('start', start)
+reboot_handler = CommandHandler('reboot', reboot)
 download_handler = CommandHandler('download', download)
 download_video_handler = CommandHandler('video', download_video)
 
 dispatcher.add_handler(start_handler)
+dispatcher.add_handler(reboot_handler)
 dispatcher.add_handler(download_handler)
 dispatcher.add_handler(download_video_handler)
 
