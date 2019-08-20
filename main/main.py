@@ -45,11 +45,12 @@ def start(bot, update):
     msg += "O {0} está a sua disposição.\n".format(me.first_name)
     msg += "O que você deseja fazer?\n\n"
     msg += "/reboot - Reiniciar sistema.\n"
-    msg += "/download - Efetuar downloads."
+    msg += "/download - Efetuar downloads.\n"
+    msg += "/stop - Parar servidor."
 
     # Commands menu
-    main_menu_keyboard = [[telegram.KeyboardButton('/Reboot')],
-                            [telegram.KeyboardButton('/Download')]]
+    main_menu_keyboard = [[telegram.KeyboardButton('/reboot')],
+                            [telegram.KeyboardButton('/download')], [telegram.KeyboardButton('/stop')]]
     reply_kb_markup = telegram.ReplyKeyboardMarkup(main_menu_keyboard,
                                                    resize_keyboard=True,
                                                    one_time_keyboard=True)
@@ -113,9 +114,7 @@ def stop():
     """
         Funcao que desliga o servidor
     """
-    print("ok")
-    sys.exit(0)
-
+    os.system("bash /pw/stop.sh")
 def unknown(bot, update):
     """
         Placeholder command when the user sends an unknown command.
@@ -132,7 +131,7 @@ def unknown(bot, update):
             arquivo.close()
             comando = "nohup bash downloadVideo.sh > /dev/null &"
             os.system(comando)
-            '''comando = " youtube-dl -o \"/usr/games/usr/tel/videos/%(title)s.%(ext)s\" " + video_url
+            '''comando = " youtube-dl -o \"/usr/bin/usr/tel/videos/%(title)s.%(ext)s\" " + video_url
             os.system(comando)
             comando = "ls videos/ > nome.txt"
             os.system(comando)
@@ -148,11 +147,13 @@ def unknown(bot, update):
     A funcao CommandHandler liga um comando do usuario a uma funcao python
 '''
 start_handler = CommandHandler('start', start)
+stop_handler = CommandHandler('stop', stop)
 reboot_handler = CommandHandler('reboot', reboot)
 download_handler = CommandHandler('download', download)
 download_video_handler = CommandHandler('video', download_video)
 
 dispatcher.add_handler(start_handler)
+dispatcher.add_handler(stop_handler)
 dispatcher.add_handler(reboot_handler)
 dispatcher.add_handler(download_handler)
 dispatcher.add_handler(download_video_handler)
