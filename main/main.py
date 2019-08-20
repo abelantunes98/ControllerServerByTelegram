@@ -87,6 +87,16 @@ def download_video(bot, update):
     msg = "Informe a url do video desejado no formato {/ url} e aguarde um pouco."
     bot.send_message(chat_id=update.message.chat_id, text=msg)
 
+def send_video_by_id(bot, update):
+    arquivo = open('id.txt', 'r')
+    idVideo = arquivo.read().split()[4][:-1]
+    try:
+        bot.sendVideo(update.message.chat_id, str(idVideo))
+    except Exception as e:
+        print(e)
+        msg = "Erro ao enviar vídeo..."
+        bot.send_message(chat_id=update.message.chat_id, text=msg)
+
 def send_video(bot, update):
     try:
         # supports_streaming=True
@@ -129,7 +139,8 @@ def unknown(bot, update):
             arquivo = open('url.txt', 'w')
             arquivo.write(video_url)
             arquivo.close()
-            comando = "nohup bash downloadVideo.sh > /dev/null &"
+           # comando = "nohup bash downloadVideo.sh > /dev/null &"
+            comando = "bash downloadVideo.sh"
             os.system(comando)
             '''comando = " youtube-dl -o \"/usr/bin/usr/tel/videos/%(title)s.%(ext)s\" " + video_url
             os.system(comando)
@@ -137,9 +148,9 @@ def unknown(bot, update):
             os.system(comando)
             comando = "mv videos/\"$(cat nome.txt)\" videos/video.mp4"
             os.system(comando)'''
-            #send_video(bot, update)
-            #comando = "rm videos/video.mp4 nome.txt"
-            #os.system(comando)
+            send_video_by_id(bot, update)
+            comando = "rm videos/video.mp4 nome.txt"
+            os.system(comando)
         except Exception as e:
             print(e)
 

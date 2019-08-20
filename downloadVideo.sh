@@ -1,5 +1,6 @@
-youtube-dl -o "/usr/games/usr/tel/videos/%(title)s.%(ext)s" $(cat url.txt)
-ls /usr/games/usr/tel/videos/ > nome.txt
-mv /usr/games/usr/tel/videos/"$(cat nome.txt)" /usr/games/usr/tel/videos/video.mp4
-rm /usr/games/usr/tel/url.txt
+youtube-dl -o "/usr/bin/usr/tel/videos/%(title)s.%(ext)s" $(cat url.txt)
+ls /usr/bin/usr/tel/videos/ > nome.txt
+mv /usr/bin/usr/tel/videos/"$(cat nome.txt)" /usr/bin/usr/tel/videos/video.mp4
+rm /usr/bin/usr/tel/url.txt
 bash upVideo.sh
+rm nome.txt
