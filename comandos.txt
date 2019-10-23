@@ -1,4 +1,9 @@
 apt-get install redis-server
+or
+sudo yum install redis
+sudo systemctl start redis
+sudo systemctl enable redis
+
 pip install redis
 pip install python-telegram-bot
 pip install configparser
@@ -10,7 +15,10 @@ pip3.6 install telegram-upload
 pip install telegram-upload
 https://github.com/Nekmo/telegram-upload/
 
-Clone o repositório e ponha na home do usuário, junto com os
-scripts do ChatBot.
+(Se der erro no Telegram upload)
+Clone o repositório e ponha na home do usuário, 
+junto com os scripts do ChatBot.
 
 Use o screen para deixar em um terminal rodando.
+sudo yum install epel-release
+sudo yum install screen
