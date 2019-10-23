@@ -4,6 +4,13 @@ pip install python-telegram-bot
 pip install configparser
 
 # Serve para upar um arquivo a partir de uma conta
+sudo yum install python3-devel
+sudo yum install python2-devel
 pip3.6 install telegram-upload
 pip install telegram-upload
 https://github.com/Nekmo/telegram-upload/
+
+Clone o repositório e ponha na home do usuário, junto com os
+scripts do ChatBot.
+
+Use o screen para deixar em um terminal rodando.

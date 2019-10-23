@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="11ceafe6-7b2a-4959-86f2-966773b653c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadVideo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/downloadVideo.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upVideo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/upVideo.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +18,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AntiDdos-CentOS" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
@@ -50,6 +47,8 @@
       <workItem from="1565944578571" duration="4416000" />
       <workItem from="1566183837172" duration="4363000" />
       <workItem from="1566316455197" duration="4234000" />
+      <workItem from="1566335391806" duration="1877000" />
+      <workItem from="1567139791832" duration="36000" />
     </task>
     <servers />
   </component>
