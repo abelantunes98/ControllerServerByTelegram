@@ -4,9 +4,10 @@ sudo yum install redis
 sudo systemctl start redis
 sudo systemctl enable redis
 
-pip install redis
-pip install python-telegram-bot
-pip install configparser
+sudo pip3 install redis
+sudo pip3 install youtube-dl
+sudo pip3 install python-telegram-bot
+sudo pip3 install configparser
 
 # Serve para upar um arquivo a partir de uma conta
 sudo yum install python3-devel
